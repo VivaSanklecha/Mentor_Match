@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentee Onboarding - MentorMatch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .onboarding-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .progress-bar {
+            height: 1rem;
+            background-color: #e9ecef;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            background-color: var(--accent-green);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-text-up">MENTOR</span>
+            <span>-</span>
+            <span class="logo-text-start">MATCH</span>
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="onboarding-container">
+            <h2 class="text-center mb-4">Welcome, Mentee!</h2>
+            <p class="text-center">Let's set up your profile to get started.</p>
+            <div class="progress mb-4">
+                <div class="progress-bar">
+                    <div class="progress-bar-inner" id="progressBar"></div>
+                </div>
+            </div>
+            <form id="onboardingForm">
+                <div class="mb-3">
+                    <label for="profilePicture" class="form-label">Profile Picture URL</label>
+                    <input type="url" class="form-control" id="profilePicture" placeholder="Enter URL">
+                </div>
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Bio</label>
+                    <textarea class="form-control" id="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="interests" class="form-label">Interests</label>
+                    <input type="text" class="form-control" id="interests" placeholder="Enter your interests">
+                </div>
+                <div class="mb-3">
+                    <label for="availability" class="form-label">Availability</label>
+                    <select class="form-select" id="availability">
+                        <option value="">Select your availability</option>
+                        <option value="weekdays">Weekdays</option>
+                        <option value="weekends">Weekends</option>
+                        <option value="mornings">Mornings</option>
+                        <option value="evenings">Evenings</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary w-100" onclick="completeOnboarding()">Complete Setup</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function completeOnboarding() {
+            const profilePicture = document.getElementById('profilePicture').value;
+            const bio = document.getElementById('bio').value;
+            const interests = document.getElementById('interests').value;
+            const availability = document.getElementById('availability').value;
+
+            if (!profilePicture || !bio || !interests || !availability) {
+                alert('Please complete all fields to proceed.');
+                return;
+            }
+
+            // Simulate saving data and updating progress
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '100%';
+            alert('Profile setup complete! Redirecting to your dashboard...');
+            window.location.href = 'mentee-dashboard.html';
+        }
+    </script>
+</body>
+</html> 
